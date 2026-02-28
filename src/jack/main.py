@@ -20,7 +20,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import and_, desc, func
 import logging
 
-app = FastAPI(title="Rubberduck", version="0.1.0")
+app = FastAPI(title="Jack", version="0.1.0")
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -252,7 +252,7 @@ async def startup_event():
     that were left in running state. This ensures proxy continuity across 
     application restarts.
     """
-    logger.info("Starting up Rubberduck application...")
+    logger.info("Starting up Jack application...")
     
     db = SessionLocal()
     try:
@@ -292,7 +292,7 @@ async def startup_event():
     finally:
         db.close()
     
-    logger.info("Rubberduck application startup complete")
+    logger.info("Jack application startup complete")
 
 @app.on_event("shutdown")
 async def shutdown_event():
@@ -300,7 +300,7 @@ async def shutdown_event():
     Shutdown event handler to gracefully stop all running proxy processes.
     Database status remains 'running' so proxies can be restarted on app startup.
     """
-    logger.info("Shutting down Rubberduck application...")
+    logger.info("Shutting down Jack application...")
     
     # Get all active proxies from the proxy manager
     active_proxies = proxy_manager.list_active_proxies()
@@ -320,7 +320,7 @@ async def shutdown_event():
     else:
         logger.info("No active proxies to stop")
     
-    logger.info("Rubberduck application shutdown complete")
+    logger.info("Jack application shutdown complete")
 
 # Add CORS middleware
 app.add_middleware(
@@ -1026,7 +1026,7 @@ def _export_logs_csv(logs: List[LogEntry]) -> StreamingResponse:
     return StreamingResponse(
         iter_csv(),
         media_type="text/csv",
-        headers={"Content-Disposition": "attachment; filename=rubberduck_logs.csv"}
+        headers={"Content-Disposition": "attachment; filename=jack_logs.csv"}
     )
 
 def _export_logs_json(logs: List[LogEntry]) -> Response:
@@ -1054,7 +1054,7 @@ def _export_logs_json(logs: List[LogEntry]) -> Response:
     return Response(
         content=json_str,
         media_type="application/json",
-        headers={"Content-Disposition": "attachment; filename=rubberduck_logs.json"}
+        headers={"Content-Disposition": "attachment; filename=jack_logs.json"}
     )
 
 @app.get("/logs/stats")

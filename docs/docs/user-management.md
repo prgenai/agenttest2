@@ -1,23 +1,23 @@
 # User Management
 
-Rubberduck provides a simple yet effective user management system for controlling access to your LLM proxy infrastructure. Learn how to manage users, authentication, and access controls.
+Jack provides a simple yet effective user management system for controlling access to your LLM proxy infrastructure. Learn how to manage users, authentication, and access controls.
 
 ## Overview
 
-The user management system in Rubberduck allows you to:
+The user management system in Jack allows you to:
 
 - **Control Access**: Manage who can create and manage proxies
 - **Track Usage**: Associate proxy activity with specific users
 - **Secure Operations**: Protect proxy infrastructure with authentication
 - **Audit Activity**: Monitor user actions and proxy usage
 
-Currently, Rubberduck operates with a simple authentication model suitable for small teams and development environments.
+Currently, Jack operates with a simple authentication model suitable for small teams and development environments.
 
 ## Default User Account
 
 ### Initial Setup
 
-When Rubberduck starts for the first time, a default administrator account is automatically created:
+When Jack starts for the first time, a default administrator account is automatically created:
 
 **Default Credentials:**
 - **Email**: `admin@example.com`
@@ -41,7 +41,7 @@ Change the default password immediately after first login, especially in product
 ### Login Process
 
 **Web Interface Login:**
-1. Access the Rubberduck web interface
+1. Access the Jack web interface
 2. Enter your email and password
 3. Click **"Sign In"** to authenticate
 4. Upon successful login, you'll see the dashboard
@@ -152,7 +152,7 @@ Future versions will include expanded role-based access control:
 ### Authentication Security
 
 **Strong Passwords:**
-- Use unique passwords for Rubberduck accounts
+- Use unique passwords for Jack accounts
 - Enable password managers for secure storage
 - Regular password rotation (every 3-6 months)
 - Avoid sharing credentials between team members
@@ -166,7 +166,7 @@ Future versions will include expanded role-based access control:
 ### Access Control
 
 **Network Security:**
-- Restrict Rubberduck access to authorized networks
+- Restrict Jack access to authorized networks
 - Use VPN for remote access
 - Implement firewall rules for port access
 - Monitor connection logs for unusual patterns
@@ -438,4 +438,4 @@ After setting up user management:
 
 ---
 
-Proper user management ensures secure and organized access to your Rubberduck infrastructure. Follow these guidelines to maintain a secure and well-managed system.
+Proper user management ensures secure and organized access to your Jack infrastructure. Follow these guidelines to maintain a secure and well-managed system.

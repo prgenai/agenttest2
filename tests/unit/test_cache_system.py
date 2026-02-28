@@ -6,10 +6,10 @@ from fastapi.testclient import TestClient
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker
 
-from rubberduck.main import app
-from rubberduck.database import get_async_session, Base, SessionLocal
-from rubberduck.models import User, Proxy, CacheEntry
-from rubberduck.cache import CacheManager, cache_manager
+from jack.main import app
+from jack.database import get_async_session, Base, SessionLocal
+from jack.models import User, Proxy, CacheEntry
+from jack.cache import CacheManager, cache_manager
 
 # Test database setup
 SQLALCHEMY_TEST_DATABASE_URL = "sqlite+aiosqlite:///./test_cache.db"

@@ -142,6 +142,6 @@ if __name__ == "__main__":
     print(f"Cache behavior: {'✅ PASS' if success2 else '❌ FAIL'}")
     
     if success1 and success2:
-        print("\n🎉 Rubberduck OpenAI proxy is working correctly!")
+        print("\n🎉 Jack OpenAI proxy is working correctly!")
     else:
         print("\n❌ Some issues remain")

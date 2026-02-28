@@ -1,6 +1,6 @@
 import pytest
 import json
-from rubberduck.failure import FailureConfig, create_default_failure_config
+from jack.failure import FailureConfig, create_default_failure_config
 
 
 class TestFailureConfigResponseDelay:

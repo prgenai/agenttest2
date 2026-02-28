@@ -1,10 +1,10 @@
 # Using Proxies
 
-Learn how to integrate Rubberduck proxies with your applications and SDKs for seamless LLM provider switching and testing.
+Learn how to integrate Jack proxies with your applications and SDKs for seamless LLM provider switching and testing.
 
 ## Integration Overview
 
-Rubberduck proxies are designed to be drop-in replacements for direct LLM provider connections. Simply change your base URL to point to your Rubberduck proxy, and everything else remains the same.
+Jack proxies are designed to be drop-in replacements for direct LLM provider connections. Simply change your base URL to point to your Jack proxy, and everything else remains the same.
 
 ## Basic Integration Pattern
 
@@ -16,7 +16,7 @@ client = ProviderSDK(
     # base_url defaults to provider's endpoint
 )
 
-# Rubberduck proxy connection  
+# Jack proxy connection  
 client = ProviderSDK(
     api_key="your-api-key",
     base_url="http://localhost:8001"  # Your proxy port
@@ -30,7 +30,7 @@ client = ProviderSDK(
 ```python
 import openai
 
-# Using Rubberduck proxy
+# Using Jack proxy
 client = openai.OpenAI(
     api_key="your-openai-api-key",
     base_url="http://localhost:8001"
@@ -55,7 +55,7 @@ print(response.choices[0].message.content)
 ```python
 import anthropic
 
-# Using Rubberduck proxy
+# Using Jack proxy
 client = anthropic.Anthropic(
     api_key="your-anthropic-api-key",
     base_url="http://localhost:8002"
@@ -440,7 +440,7 @@ try:
     )
 except Exception as e:
     logging.error(f"Request failed: {e}")
-    # Check Rubberduck logs for more details
+    # Check Jack logs for more details
 ```
 
 ## Next Steps

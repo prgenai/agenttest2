@@ -6,11 +6,11 @@ from fastapi.testclient import TestClient
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker
 
-from rubberduck.main import app
-from rubberduck.database import get_async_session, get_db, Base
-from rubberduck.proxy import ProxyManager, proxy_manager
-from rubberduck.models import User, Proxy
-from rubberduck.providers.openai import OpenAIProvider
+from jack.main import app
+from jack.database import get_async_session, get_db, Base
+from jack.proxy import ProxyManager, proxy_manager
+from jack.models import User, Proxy
+from jack.providers.openai import OpenAIProvider
 
 # Test database setup
 SQLALCHEMY_TEST_DATABASE_URL = "sqlite+aiosqlite:///./test_proxy.db"
@@ -88,7 +88,7 @@ def test_create_proxy_app():
     manager = ProxyManager()
     
     app = manager.create_proxy_app(proxy_id=1, provider_name="openai")
-    assert app.title == "Rubberduck Proxy 1"
+    assert app.title == "Jack Proxy 1"
     assert app.version == "0.1.0"
 
 def test_create_proxy_app_invalid_provider():
@@ -170,7 +170,7 @@ def test_proxy_authorization_required(client):
     response = client.post("/proxies", json={})
     assert response.status_code == 401
 
-@patch('rubberduck.proxy.uvicorn.run')
+@patch('jack.proxy.uvicorn.run')
 def test_start_stop_proxy_flow(mock_uvicorn, client, auth_headers):
     """Test the complete proxy start/stop flow."""
     # Mock uvicorn.run to prevent actual server start
@@ -217,7 +217,7 @@ def test_stop_nonexistent_proxy(client, auth_headers):
     assert "Proxy not found" in response.json()["detail"]
 
 @pytest.mark.asyncio
-@patch('rubberduck.providers.openai.httpx.AsyncClient')
+@patch('jack.providers.openai.httpx.AsyncClient')
 async def test_proxy_request_forwarding(mock_client_class):
     """Test that proxy forwards requests to provider correctly."""
     # Mock the HTTP client

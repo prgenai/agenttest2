@@ -4,9 +4,9 @@ from fastapi.testclient import TestClient
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker
 
-from rubberduck.main import app
-from rubberduck.database import get_async_session, Base
-from rubberduck.models import User
+from jack.main import app
+from jack.database import get_async_session, Base
+from jack.models import User
 
 # Test database setup
 SQLALCHEMY_TEST_DATABASE_URL = "sqlite+aiosqlite:///./test_auth.db"

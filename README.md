@@ -1,8 +1,8 @@
-# 🦆 Rubberduck
+# 🦆 Jack
 
 **A local LLM caching reverse proxy server designed to emulate major LLM providers with advanced testing capabilities.**
 
-Rubberduck provides caching, failure simulation, rate limiting, per-user proxy instances, and detailed logging for testing and development of LLM-powered applications.
+Jack provides caching, failure simulation, rate limiting, per-user proxy instances, and detailed logging for testing and development of LLM-powered applications.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.11+-green.svg)
@@ -11,7 +11,7 @@ Rubberduck provides caching, failure simulation, rate limiting, per-user proxy i
 
 ## 📸 Screenshots
 
-![Rubberduck Proxies Management](assets/rubberduck_proxies.png)
+![Jack Proxies Management](assets/jack_proxies.png)
 
 ## ✨ Features
 
@@ -63,8 +63,8 @@ Rubberduck provides caching, failure simulation, rate limiting, per-user proxy i
 ### 1. Clone & Setup Backend
 
 ```bash
-git clone https://github.com/your-username/rubberduck.git
-cd rubberduck
+git clone https://github.com/your-username/jack.git
+cd jack
 
 # Create virtual environment
 python -m venv venv
@@ -190,8 +190,8 @@ Configure failure simulation per proxy:
 ### Project Structure
 
 ```
-rubberduck/
-├── src/rubberduck/          # Python backend
+jack/
+├── src/jack/          # Python backend
 │   ├── auth/                # FastAPI Users authentication
 │   ├── cache/               # Response caching system
 │   ├── database/            # SQLite + SQLAlchemy
@@ -223,7 +223,7 @@ python -m pytest tests/unit/
 python -m pytest tests/integration/
 
 # Test with coverage
-python -m pytest --cov=src/rubberduck
+python -m pytest --cov=src/jack
 ```
 
 ### Frontend Tests
@@ -258,7 +258,7 @@ npm run test:ui
 pip install -r requirements-dev.txt
 
 # Run with auto-reload
-uvicorn src.rubberduck.main:app --reload --host 0.0.0.0 --port 8000
+uvicorn src.jack.main:app --reload --host 0.0.0.0 --port 8000
 
 # Format code
 black src/
@@ -288,7 +288,7 @@ npm run build
 
 ### Adding LLM Providers
 
-1. Create new provider module in `src/rubberduck/providers/`
+1. Create new provider module in `src/jack/providers/`
 2. Implement base provider interface
 3. Add to provider registry
 4. Update frontend provider options

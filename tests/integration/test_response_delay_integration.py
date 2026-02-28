@@ -6,9 +6,9 @@ from unittest.mock import AsyncMock, MagicMock, patch
 from fastapi import Request
 from fastapi.responses import JSONResponse
 
-from rubberduck.failure import FailureConfig, FailureSimulator
-from rubberduck.proxy import ProxyManager
-from rubberduck.logging import log_proxy_request
+from jack.failure import FailureConfig, FailureSimulator
+from jack.proxy import ProxyManager
+from jack.logging import log_proxy_request
 
 
 class TestResponseDelayIntegration:
@@ -170,7 +170,7 @@ class TestResponseDelayIntegration:
         response_delay_ms = 100.0  # 100ms delay
         
         # Mock the database and logging
-        with patch('rubberduck.logging.SessionLocal') as mock_session_local:
+        with patch('jack.logging.SessionLocal') as mock_session_local:
             mock_db = MagicMock()
             mock_session_local.return_value = mock_db
             

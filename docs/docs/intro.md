@@ -5,7 +5,7 @@ slug: /
 
 # Introduction
 
-Welcome to **Rubberduck** – a local LLM caching reverse proxy with advanced testing capabilities designed for developers building LLM-powered applications.
+Welcome to **Jack** – a local LLM caching reverse proxy with advanced testing capabilities designed for developers building LLM-powered applications.
 
 <div className="screenshot">
 
@@ -13,9 +13,9 @@ Welcome to **Rubberduck** – a local LLM caching reverse proxy with advanced te
 
 </div>
 
-## What is Rubberduck?
+## What is Jack?
 
-Rubberduck is a powerful reverse proxy server that sits between your applications and LLM providers, offering:
+Jack is a powerful reverse proxy server that sits between your applications and LLM providers, offering:
 
 - **Caching** to reduce costs and improve performance
 - **Failure simulation** to test your application's resilience  
@@ -26,7 +26,7 @@ Rubberduck is a powerful reverse proxy server that sits between your application
 
 ### 🔄 **LLM Provider Emulation**
 - **Universal compatibility**: Works with OpenAI, Anthropic, Azure OpenAI, AWS Bedrock, Google Vertex AI, and Deepseek
-- **Perfect SDK integration**: No code changes needed - just point your existing SDKs to Rubberduck
+- **Perfect SDK integration**: No code changes needed - just point your existing SDKs to Jack
 - **Transparent passthrough**: Headers and authentication flow through seamlessly
 
 ### 💾 **Intelligent Caching**
@@ -53,7 +53,7 @@ Rubberduck is a powerful reverse proxy server that sits between your application
 - **Intuitive management**: Easy proxy creation and configuration
 - **Advanced filtering**: Search and filter logs with multiple criteria
 
-## Where Rubberduck Excels
+## Where Jack Excels
 
 ### 🚀 **Development & Testing**
 Perfect for developers who need to:
@@ -80,13 +80,13 @@ Excellent for researchers who need to:
 
 Ready to improve your LLM development workflow? Let's get you set up:
 
-1. **[Install Rubberduck](/installation)** - Set up the backend and frontend
+1. **[Install Jack](/installation)** - Set up the backend and frontend
 2. **[Create your first proxy](/usage/creating-proxies)** - Connect to your favorite LLM provider
 3. **[Start monitoring](/logging)** - Track requests and optimize performance
 
 ## Default Access
 
-Rubberduck creates a default admin user on first startup:
+Jack creates a default admin user on first startup:
 - **Email**: `admin@example.com`
 - **Password**: `admin`
 
@@ -94,4 +94,4 @@ This allows immediate access without registration, perfect for getting started q
 
 ---
 
-**Ready to dive in?** Start with our [Installation Guide](/installation) to get Rubberduck running in minutes.
+**Ready to dive in?** Start with our [Installation Guide](/installation) to get Jack running in minutes.

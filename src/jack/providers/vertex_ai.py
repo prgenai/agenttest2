@@ -64,7 +64,7 @@ class VertexAIProvider(BaseProvider):
         # Prepare headers for Vertex AI API
         api_headers = {
             "Content-Type": "application/json",
-            "User-Agent": "Rubberduck-Proxy/0.1.0"
+            "User-Agent": "Jack-Proxy/0.1.0"
         }
         
         # Pass through authorization header (Google uses Bearer tokens)

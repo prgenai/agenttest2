@@ -62,7 +62,7 @@ class DeepSeekProvider(BaseProvider):
         # Prepare headers for DeepSeek API
         api_headers = {
             "Content-Type": "application/json",
-            "User-Agent": "Rubberduck-Proxy/0.1.0"
+            "User-Agent": "Jack-Proxy/0.1.0"
         }
         
         # Pass through authorization header (DeepSeek uses Bearer token)

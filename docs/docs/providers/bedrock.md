@@ -1,12 +1,12 @@
 # AWS Bedrock Provider
 
-Learn how to configure and use Rubberduck with AWS Bedrock, including important architectural considerations and authentication methods.
+Learn how to configure and use Jack with AWS Bedrock, including important architectural considerations and authentication methods.
 
 ## Architecture Overview
 
 ### Why API Reverse Proxy?
 
-Rubberduck implements an **API reverse proxy** rather than a traditional HTTP CONNECT proxy for AWS Bedrock. This architectural decision addresses specific limitations:
+Jack implements an **API reverse proxy** rather than a traditional HTTP CONNECT proxy for AWS Bedrock. This architectural decision addresses specific limitations:
 
 **FastAPI CONNECT Limitation:**
 - FastAPI does not natively support the HTTP `CONNECT` method
@@ -16,7 +16,7 @@ Rubberduck implements an **API reverse proxy** rather than a traditional HTTP CO
 **Traditional vs. Our Approach:**
 ```
 Traditional: Client -> CONNECT Proxy -> AWS (encrypted tunnel)
-Rubberduck:  Client -> API Proxy -> AWS (request processing & re-signing)
+Jack:  Client -> API Proxy -> AWS (request processing & re-signing)
 ```
 
 ### Benefits of Our Approach
@@ -28,7 +28,7 @@ Rubberduck:  Client -> API Proxy -> AWS (request processing & re-signing)
 
 ## Authentication Methods
 
-Rubberduck supports two authentication modes for AWS Bedrock:
+Jack supports two authentication modes for AWS Bedrock:
 
 ### Mode 1: Custom Headers (Recommended) ✅
 
@@ -57,7 +57,7 @@ payload = {
     "temperature": 0
 }
 
-# Make request to Rubberduck proxy
+# Make request to Jack proxy
 response = requests.post(
     "http://localhost:8009/model/meta.llama3-2-1b-instruct-v1:0/invoke",
     json=payload,
@@ -86,10 +86,10 @@ print(response.json())
 import boto3
 import json
 
-# Configure boto3 to use Rubberduck proxy
+# Configure boto3 to use Jack proxy
 client = boto3.client(
     'bedrock-runtime',
-    endpoint_url='http://localhost:8009',  # Rubberduck proxy
+    endpoint_url='http://localhost:8009',  # Jack proxy
     region_name='us-east-1',
     aws_access_key_id='AKIA...',
     aws_secret_access_key='your-secret-key'
@@ -134,7 +134,7 @@ except Exception as e:
 ## Implementation Details
 
 ### Request Detection
-Rubberduck automatically detects the authentication method:
+Jack automatically detects the authentication method:
 
 ```python
 # Check for existing AWS signature
@@ -225,7 +225,7 @@ signer.add_auth(aws_request)
 3. Confirm you have Bedrock permissions
 
 **Network Issues:**
-1. Verify Rubberduck proxy is running
+1. Verify Jack proxy is running
 2. Check firewall settings
 3. Confirm AWS connectivity
 
@@ -265,7 +265,7 @@ python test_bedrock_caching.py
 1. **Always use custom headers method** for reliable operation
 2. **Set credentials via environment variables** for security
 3. **Implement proper error handling** for authentication and model availability
-4. **Monitor usage** through Rubberduck's logging features
+4. **Monitor usage** through Jack's logging features
 
 ### Security Considerations
 1. **Never log AWS credentials** in headers or request bodies

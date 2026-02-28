@@ -1,1 +1,1 @@
-"""Test package for Rubberduck"""
+"""Test package for Jack"""

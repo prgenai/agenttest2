@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Debug script to test Rubberduck OpenAI proxy emulation
+Debug script to test Jack OpenAI proxy emulation
 """
 
 import os
@@ -30,29 +30,29 @@ def test_direct_openai():
         print()
         return False
 
-def test_rubberduck_proxy():
-    """Test Rubberduck proxy"""
-    print("=== Testing Rubberduck Proxy ===")
+def test_jack_proxy():
+    """Test Jack proxy"""
+    print("=== Testing Jack Proxy ===")
     
     client = OpenAI(
-        base_url="http://localhost:8010/v1"  # Point to Rubberduck proxy
+        base_url="http://localhost:8010/v1"  # Point to Jack proxy
     )
     
     try:
-        print("Sending request to Rubberduck proxy...")
+        print("Sending request to Jack proxy...")
         response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[{"role": "user", "content": "Say 'hello world' and nothing else."}],
             max_tokens=10,
             temperature=0
         )
-        print("✅ Rubberduck Proxy: SUCCESS")
+        print("✅ Jack Proxy: SUCCESS")
         print(f"Response: {response.choices[0].message.content}")
         print(f"Usage: {response.usage}")
         print()
         return True
     except Exception as e:
-        print(f"❌ Rubberduck Proxy: FAILED - {e}")
+        print(f"❌ Jack Proxy: FAILED - {e}")
         print(f"Error type: {type(e).__name__}")
         print()
         return False
@@ -113,7 +113,7 @@ def test_raw_http():
         return False
 
 if __name__ == "__main__":
-    print("Testing Rubberduck OpenAI Proxy Emulation")
+    print("Testing Jack OpenAI Proxy Emulation")
     print("=" * 50)
     print()
     
@@ -131,7 +131,7 @@ if __name__ == "__main__":
     results.append(("Raw HTTP", test_raw_http()))
     
     # Test through OpenAI SDK with proxy
-    results.append(("Rubberduck Proxy", test_rubberduck_proxy()))
+    results.append(("Jack Proxy", test_jack_proxy()))
     
     print("=" * 50)
     print("SUMMARY:")

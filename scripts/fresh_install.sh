@@ -1,10 +1,10 @@
 #!/bin/bash
-# Fresh installation script for Rubberduck
+# Fresh installation script for Jack
 # This script sets up the database and ensures all tables are created properly
 
 set -e  # Exit on any error
 
-echo "🦆 Rubberduck Fresh Installation"
+echo "🦆 Jack Fresh Installation"
 echo "================================="
 
 # Get the project root directory
@@ -28,9 +28,9 @@ source venv/bin/activate
 echo "🗄️  Setting up database..."
 
 # Remove existing database if it exists (for fresh install)
-if [ -f "data/rubberduck.db" ]; then
+if [ -f "data/jack.db" ]; then
     echo "⚠️  Removing existing database..."
-    rm data/rubberduck.db
+    rm data/jack.db
 fi
 
 # Run database migrations
@@ -44,7 +44,7 @@ python scripts/setup_database.py
 echo ""
 echo "🎉 Fresh installation completed successfully!"
 echo ""
-echo "🚀 You can now start Rubberduck:"
+echo "🚀 You can now start Jack:"
 echo "   # Backend (in one terminal):"
 echo "   source venv/bin/activate"
 echo "   python run.py"

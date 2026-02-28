@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Debug gzip issues with Rubberduck proxy
+Debug gzip issues with Jack proxy
 """
 
 import os

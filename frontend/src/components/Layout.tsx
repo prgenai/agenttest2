@@ -32,7 +32,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <div className="flex h-full flex-col">
           {/* Logo */}
           <div className="flex h-16 items-center px-6 border-b border-gray-200">
-            <h1 className="text-xl font-bold text-gray-900">🦆 Rubberduck</h1>
+            <h1 className="text-xl font-bold text-gray-900">🦆 Jack</h1>
           </div>
 
           {/* Navigation */}

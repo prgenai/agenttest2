@@ -1,10 +1,10 @@
 # Advanced Topics
 
-Explore advanced configuration options, deployment strategies, and optimization techniques for Rubberduck. This guide covers topics for experienced users looking to maximize the capabilities of their LLM proxy infrastructure.
+Explore advanced configuration options, deployment strategies, and optimization techniques for Jack. This guide covers topics for experienced users looking to maximize the capabilities of their LLM proxy infrastructure.
 
 ## Failure Simulation
 
-Rubberduck's failure simulation capabilities allow you to test the resilience of your applications against various failure scenarios. This feature is essential for building robust LLM-dependent applications.
+Jack's failure simulation capabilities allow you to test the resilience of your applications against various failure scenarios. This feature is essential for building robust LLM-dependent applications.
 
 ### Timeout Simulation
 
@@ -291,13 +291,13 @@ def handle_provider_error(error, provider):
 # docker-compose.yml
 version: '3.8'
 services:
-  rubberduck:
-    image: rubberduck:latest
+  jack:
+    image: jack:latest
     ports:
       - "9000:9000"
       - "5173:5173"
     environment:
-      - DATABASE_URL=sqlite:///app/data/rubberduck.db
+      - DATABASE_URL=sqlite:///app/data/jack.db
       - REDIS_URL=redis://redis:6379
     volumes:
       - ./data:/app/data
@@ -335,27 +335,27 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
     depends_on:
-      - rubberduck-1
-      - rubberduck-2
+      - jack-1
+      - jack-2
   
-  rubberduck-1:
-    image: rubberduck:latest
+  jack-1:
+    image: jack:latest
     environment:
       - NODE_ID=node-1
-      - DATABASE_URL=postgresql://user:pass@postgres:5432/rubberduck
+      - DATABASE_URL=postgresql://user:pass@postgres:5432/jack
       - REDIS_URL=redis://redis:6379
   
-  rubberduck-2:
-    image: rubberduck:latest
+  jack-2:
+    image: jack:latest
     environment:
       - NODE_ID=node-2
-      - DATABASE_URL=postgresql://user:pass@postgres:5432/rubberduck
+      - DATABASE_URL=postgresql://user:pass@postgres:5432/jack
       - REDIS_URL=redis://redis:6379
   
   postgres:
     image: postgres:13
     environment:
-      POSTGRES_DB: rubberduck
+      POSTGRES_DB: jack
       POSTGRES_USER: user
       POSTGRES_PASSWORD: pass
     volumes:
@@ -374,15 +374,15 @@ volumes:
 
 **Load Balancer Configuration:**
 ```nginx
-upstream rubberduck_backend {
-    server rubberduck-1:9000;
-    server rubberduck-2:9000;
+upstream jack_backend {
+    server jack-1:9000;
+    server jack-2:9000;
 }
 
 server {
     listen 80;
     location / {
-        proxy_pass http://rubberduck_backend;
+        proxy_pass http://jack_backend;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
     }
@@ -394,15 +394,15 @@ server {
 **AWS ECS Configuration:**
 ```json
 {
-  "family": "rubberduck",
+  "family": "jack",
   "networkMode": "awsvpc",
   "requiresCompatibilities": ["FARGATE"],
   "cpu": "1024",
   "memory": "2048",
   "containerDefinitions": [
     {
-      "name": "rubberduck",
-      "image": "your-account.dkr.ecr.region.amazonaws.com/rubberduck:latest",
+      "name": "jack",
+      "image": "your-account.dkr.ecr.region.amazonaws.com/jack:latest",
       "portMappings": [
         {"containerPort": 9000, "protocol": "tcp"}
       ],
@@ -413,7 +413,7 @@ server {
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "/ecs/rubberduck",
+          "awslogs-group": "/ecs/jack",
           "awslogs-region": "us-east-1"
         }
       }
@@ -428,27 +428,27 @@ server {
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: rubberduck
+  name: jack
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: rubberduck
+      app: jack
   template:
     metadata:
       labels:
-        app: rubberduck
+        app: jack
     spec:
       containers:
-      - name: rubberduck
-        image: rubberduck:latest
+      - name: jack
+        image: jack:latest
         ports:
         - containerPort: 9000
         env:
         - name: DATABASE_URL
           valueFrom:
             secretKeyRef:
-              name: rubberduck-secrets
+              name: jack-secrets
               key: database-url
         resources:
           requests:
@@ -461,10 +461,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: rubberduck-service
+  name: jack-service
 spec:
   selector:
-    app: rubberduck
+    app: jack
   ports:
   - port: 80
     targetPort: 9000
@@ -580,8 +580,8 @@ async def batch_requests(requests, batch_size=10):
 ```nginx
 server {
     listen 443 ssl http2;
-    ssl_certificate /etc/ssl/certs/rubberduck.crt;
-    ssl_certificate_key /etc/ssl/private/rubberduck.key;
+    ssl_certificate /etc/ssl/certs/jack.crt;
+    ssl_certificate_key /etc/ssl/private/jack.key;
     
     ssl_protocols TLSv1.2 TLSv1.3;
     ssl_ciphers ECDHE+AESGCM:ECDHE+CHACHA20:DHE+AESGCM:DHE+CHACHA20:!aNULL:!MD5:!DSS;
@@ -685,15 +685,15 @@ def get_user_logs(user_id, start_date, end_date):
 from prometheus_client import Counter, Histogram, Gauge
 
 # Define custom metrics
-request_count = Counter('rubberduck_requests_total', 
+request_count = Counter('jack_requests_total', 
                        'Total requests processed', 
                        ['proxy_id', 'provider', 'status'])
 
-request_duration = Histogram('rubberduck_request_duration_seconds',
+request_duration = Histogram('jack_request_duration_seconds',
                            'Request duration in seconds',
                            ['proxy_id', 'provider'])
 
-active_proxies = Gauge('rubberduck_active_proxies',
+active_proxies = Gauge('jack_active_proxies',
                       'Number of active proxy instances')
 
 # Use in request processing
@@ -786,22 +786,22 @@ def process_llm_request(request):
 # backup_database.sh
 
 DATE=$(date +"%Y%m%d_%H%M%S")
-BACKUP_DIR="/backups/rubberduck"
-DB_FILE="/app/data/rubberduck.db"
+BACKUP_DIR="/backups/jack"
+DB_FILE="/app/data/jack.db"
 
 # Create backup directory
 mkdir -p $BACKUP_DIR
 
 # Backup SQLite database
-sqlite3 $DB_FILE ".backup $BACKUP_DIR/rubberduck_$DATE.db"
+sqlite3 $DB_FILE ".backup $BACKUP_DIR/jack_$DATE.db"
 
 # Compress backup
-gzip "$BACKUP_DIR/rubberduck_$DATE.db"
+gzip "$BACKUP_DIR/jack_$DATE.db"
 
 # Clean old backups (keep 30 days)
-find $BACKUP_DIR -name "rubberduck_*.db.gz" -mtime +30 -delete
+find $BACKUP_DIR -name "jack_*.db.gz" -mtime +30 -delete
 
-echo "Backup completed: rubberduck_$DATE.db.gz"
+echo "Backup completed: jack_$DATE.db.gz"
 ```
 
 **Configuration Backup:**
@@ -846,7 +846,7 @@ fi
 docker-compose down
 
 # Restore database
-gunzip -c "$BACKUP_FILE" > "$RESTORE_DIR/rubberduck.db"
+gunzip -c "$BACKUP_FILE" > "$RESTORE_DIR/jack.db"
 
 # Restore configuration
 python restore_configuration.py "$BACKUP_FILE"
@@ -895,4 +895,4 @@ After implementing advanced configurations:
 
 ---
 
-These advanced topics provide the foundation for building a robust, scalable, and secure LLM proxy infrastructure with Rubberduck. Implement these features gradually based on your specific requirements and use cases.
+These advanced topics provide the foundation for building a robust, scalable, and secure LLM proxy infrastructure with Jack. Implement these features gradually based on your specific requirements and use cases.

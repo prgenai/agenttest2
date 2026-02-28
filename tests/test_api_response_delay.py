@@ -1,7 +1,7 @@
 import pytest
 from fastapi import HTTPException
 
-from rubberduck.failure import FailureConfig
+from jack.failure import FailureConfig
 
 
 class TestResponseDelayValidation:

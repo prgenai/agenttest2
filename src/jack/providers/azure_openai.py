@@ -61,7 +61,7 @@ class AzureOpenAIProvider(BaseProvider):
         # Prepare headers for Azure OpenAI API
         api_headers = {
             "Content-Type": "application/json",
-            "User-Agent": "Rubberduck-Proxy/0.1.0"
+            "User-Agent": "Jack-Proxy/0.1.0"
         }
         
         # Pass through authorization header (Azure uses api-key)

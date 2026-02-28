@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 export const usePageTitle = (title: string) => {
   useEffect(() => {
     const previousTitle = document.title;
-    document.title = `${title} - Rubberduck`;
+    document.title = `${title} - Jack`;
 
     // Cleanup function to restore previous title
     return () => {

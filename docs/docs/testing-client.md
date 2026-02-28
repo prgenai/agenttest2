@@ -1,6 +1,6 @@
 # Testing Client Guide
 
-The Rubberduck testing client is a comprehensive load testing tool designed specifically for LLM proxies. Located at `scripts/proxy_testing/tester.py`, it provides advanced features for testing proxy performance, reliability, and behavior under various conditions.
+The Jack testing client is a comprehensive load testing tool designed specifically for LLM proxies. Located at `scripts/proxy_testing/tester.py`, it provides advanced features for testing proxy performance, reliability, and behavior under various conditions.
 
 ## Overview
 
@@ -14,7 +14,7 @@ The testing client is a single-file Python CLI that fires controllable requests 
 - **Comprehensive Metrics**: Latency statistics, success rates, and percentile analysis
 - **Flexible Output Formats**: Table, JSON, and CSV reporting
 - **Interactive & Non-Interactive Modes**: CLI automation and guided setup
-- **Direct & Proxy Testing**: Test providers directly or through Rubberduck proxies
+- **Direct & Proxy Testing**: Test providers directly or through Jack proxies
 
 ## Installation & Setup
 
@@ -111,7 +111,7 @@ The interactive mode walks you through:
 Use command-line parameters for automation:
 
 ```bash
-# Test OpenAI through Rubberduck proxy
+# Test OpenAI through Jack proxy
 python tester.py \
   --provider openai \
   --model gpt-4 \
@@ -162,7 +162,7 @@ python tester.py \
 
 **Connection:**
 ```bash
---proxy-url, -u      # Rubberduck proxy URL (omit for direct connection)
+--proxy-url, -u      # Jack proxy URL (omit for direct connection)
 --api-key, -k        # Override API key (uses env vars by default)
 ```
 
@@ -250,7 +250,7 @@ python tester.py --provider aws-bedrock --model amazon.nova-micro-v1:0 --num-req
 
 ### Failure Resilience Testing
 
-Test proxy behavior under failure conditions by configuring failure simulation in Rubberduck:
+Test proxy behavior under failure conditions by configuring failure simulation in Jack:
 
 ```bash
 # Test with high error rate configured in proxy
@@ -440,7 +440,7 @@ python tester.py --provider openai --model gpt-4 --num-requests 100 --concurrenc
 
 **Performance Baseline:**
 1. Test direct provider connection (no `--proxy-url`)
-2. Test through Rubberduck proxy with same parameters
+2. Test through Jack proxy with same parameters
 3. Compare latency and success rates
 
 ### Data Management
@@ -568,9 +568,9 @@ jobs:
           cd scripts/proxy_testing
           pip install -r requirements.txt
           
-      - name: Start Rubberduck
+      - name: Start Jack
         run: |
-          # Start Rubberduck backend
+          # Start Jack backend
           python manage.py runserver &
           sleep 10
           
@@ -606,4 +606,4 @@ After mastering the testing client:
 
 ---
 
-The testing client is a powerful tool for validating proxy performance and reliability. Use it regularly to ensure your Rubberduck deployment meets performance requirements under various load conditions.
+The testing client is a powerful tool for validating proxy performance and reliability. Use it regularly to ensure your Jack deployment meets performance requirements under various load conditions.

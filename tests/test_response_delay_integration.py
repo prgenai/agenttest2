@@ -3,7 +3,7 @@ import time
 import asyncio
 from unittest.mock import Mock, AsyncMock, patch
 
-from rubberduck.failure import FailureConfig, FailureSimulator
+from jack.failure import FailureConfig, FailureSimulator
 
 
 class TestResponseDelayIntegration:

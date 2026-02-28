@@ -1,6 +1,6 @@
-# Rubberduck Codebase Changes
+# Jack Codebase Changes
 
-If you have cloned the original `Zipstack/rubberduck` repository, you will encounter a few issues that prevent it from running out of the box.
+If you have cloned the original `Zipstack/jack` repository, you will encounter a few issues that prevent it from running out of the box.
 
 Apply the following changes to fix initialization, dependency conflicts, and test suite execution.
 

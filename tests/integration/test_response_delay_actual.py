@@ -1,7 +1,7 @@
 import pytest
 import time
 import asyncio
-from rubberduck.failure import FailureConfig, FailureSimulator
+from jack.failure import FailureConfig, FailureSimulator
 
 
 class TestResponseDelayActual:

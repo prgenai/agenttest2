@@ -5,10 +5,10 @@ from datetime import datetime, timedelta
 from fastapi.testclient import TestClient
 from unittest.mock import AsyncMock, MagicMock
 
-from rubberduck.main import app
-from rubberduck.models import LogEntry, Proxy, User
-from rubberduck.logging import logging_middleware, log_proxy_request
-from rubberduck.database import SessionLocal
+from jack.main import app
+from jack.models import LogEntry, Proxy, User
+from jack.logging import logging_middleware, log_proxy_request
+from jack.database import SessionLocal
 
 
 class TestLoggingMiddleware:

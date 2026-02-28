@@ -1,7 +1,7 @@
 import pytest
-from rubberduck.providers import get_provider, list_providers, get_all_providers, PROVIDERS
-from rubberduck.providers.base import BaseProvider
-from rubberduck.providers.openai import OpenAIProvider
+from jack.providers import get_provider, list_providers, get_all_providers, PROVIDERS
+from jack.providers.base import BaseProvider
+from jack.providers.openai import OpenAIProvider
 
 def test_provider_registration():
     """Test that providers are automatically registered."""

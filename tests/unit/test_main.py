@@ -1,7 +1,7 @@
 import pytest
 from fastapi.testclient import TestClient
-from rubberduck.main import app
-from rubberduck.failure import create_default_failure_config
+from jack.main import app
+from jack.failure import create_default_failure_config
 
 client = TestClient(app)
 

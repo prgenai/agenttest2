@@ -1,6 +1,6 @@
 # LLM Proxy Load-Test Script
 
-A comprehensive testing script that can test both direct LLM provider APIs and the Rubberduck LLM proxy. Supports multiple providers and generates detailed performance metrics.
+A comprehensive testing script that can test both direct LLM provider APIs and the Jack LLM proxy. Supports multiple providers and generates detailed performance metrics.
 
 ## Features
 
@@ -43,7 +43,7 @@ python tester.py -p anthropic -m claude-3-haiku-20240307 -n 25
 Use `--proxy-url` to test through a proxy server:
 
 ```bash
-# Test through local Rubberduck proxy
+# Test through local Jack proxy
 python tester.py -p openai -m gpt-4o -n 50 --proxy-url http://localhost:8000
 
 # Test through proxy with logging

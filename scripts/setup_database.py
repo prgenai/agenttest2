@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Database setup script for Rubberduck.
+Database setup script for Jack.
 This script ensures all necessary tables and data are created properly.
 """
 
@@ -15,8 +15,8 @@ sys.path.insert(0, str(project_root / "src"))
 from sqlalchemy import create_engine, inspect
 from alembic.config import Config
 from alembic import command
-from rubberduck.database import Base, engine
-from rubberduck.models import User, Proxy, LogEntry, CacheEntry
+from jack.database import Base, engine
+from jack.models import User, Proxy, LogEntry, CacheEntry
 
 
 def check_tables_exist():
@@ -67,7 +67,7 @@ def verify_database():
     
     # Test basic functionality
     try:
-        from rubberduck.database import SessionLocal
+        from jack.database import SessionLocal
         session = SessionLocal()
         
         # Test each table
@@ -88,11 +88,11 @@ def verify_database():
 
 def main():
     """Main setup function."""
-    print("Rubberduck Database Setup")
+    print("Jack Database Setup")
     print("=" * 40)
     
     print(f"Project root: {project_root}")
-    print(f"Database location: {project_root / 'data' / 'rubberduck.db'}")
+    print(f"Database location: {project_root / 'data' / 'jack.db'}")
     
     # Check current state
     missing_tables = check_tables_exist()
@@ -112,7 +112,7 @@ def main():
         return 1
     
     print("\n✅ Database setup completed successfully!")
-    print("\nYou can now start the Rubberduck server.")
+    print("\nYou can now start the Jack server.")
     return 0
 
 

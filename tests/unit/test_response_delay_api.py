@@ -2,8 +2,8 @@ import pytest
 import json
 from fastapi.testclient import TestClient
 from unittest.mock import patch, MagicMock
-from rubberduck.main import app
-from rubberduck.failure import FailureConfig
+from jack.main import app
+from jack.failure import FailureConfig
 
 
 class TestResponseDelayAPI:

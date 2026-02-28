@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-CLI entry point for Rubberduck LLM Caching Proxy Server
+CLI entry point for Jack LLM Caching Proxy Server
 """
 
 import argparse
@@ -11,7 +11,7 @@ from .main import app
 
 def main():
     """Main CLI entry point."""
-    parser = argparse.ArgumentParser(description="Rubberduck LLM Caching Proxy Server")
+    parser = argparse.ArgumentParser(description="Jack LLM Caching Proxy Server")
     parser.add_argument(
         "--host", 
         default="0.0.0.0", 
@@ -37,19 +37,19 @@ def main():
     
     args = parser.parse_args()
     
-    print(f"Starting Rubberduck server on {args.host}:{args.port}")
+    print(f"Starting Jack server on {args.host}:{args.port}")
     print(f"Documentation available at http://{args.host}:{args.port}/docs")
     
     try:
         uvicorn.run(
-            "rubberduck.main:app",
+            "jack.main:app",
             host=args.host,
             port=args.port,
             reload=args.reload,
             log_level=args.log_level
         )
     except KeyboardInterrupt:
-        print("\nShutting down Rubberduck server...")
+        print("\nShutting down Jack server...")
         sys.exit(0)
 
 

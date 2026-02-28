@@ -110,7 +110,7 @@ class ProxyManager:
         Returns:
             FastAPI application configured for this proxy
         """
-        app = FastAPI(title=f"Rubberduck Proxy {proxy_id}", version="0.1.0")
+        app = FastAPI(title=f"Jack Proxy {proxy_id}", version="0.1.0")
         
         # Get the provider instance
         try:

@@ -50,8 +50,8 @@ def test_direct_anthropic_api():
         return False
 
 def test_raw_http_to_proxy():
-    """Test raw HTTP request to Rubberduck Anthropic proxy"""
-    console.print("\n=== Testing Raw HTTP to Rubberduck Proxy ===", style="bold blue")
+    """Test raw HTTP request to Jack Anthropic proxy"""
+    console.print("\n=== Testing Raw HTTP to Jack Proxy ===", style="bold blue")
     
     api_key = os.getenv('ANTHROPIC_API_KEY')
     if not api_key:
@@ -122,7 +122,7 @@ def test_anthropic_sdk_direct():
         return False
 
 def test_anthropic_sdk_via_proxy():
-    """Test official Anthropic SDK connecting via Rubberduck proxy"""
+    """Test official Anthropic SDK connecting via Jack proxy"""
     console.print("\n=== Testing Anthropic SDK (Via Proxy) ===", style="bold blue")
     
     try:
@@ -260,8 +260,8 @@ def test_proxy_endpoints():
 def check_proxy_logs_instruction():
     """Provide instructions for checking proxy logs"""
     console.print("\n=== Checking Proxy Logs ===", style="bold blue")
-    console.print("💡 To see if requests are reaching Rubberduck:", style="yellow")
-    console.print("1. In another terminal, run the Rubberduck backend")
+    console.print("💡 To see if requests are reaching Jack:", style="yellow")
+    console.print("1. In another terminal, run the Jack backend")
     console.print("2. Watch for log entries when making requests")
     console.print("3. Look for entries like: 'Proxy request: POST /messages'")
     console.print("4. If no logs appear, the request isn't reaching the proxy")

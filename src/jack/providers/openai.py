@@ -2,25 +2,26 @@ from typing import Dict, Any, Optional
 import httpx
 from .base import BaseProvider
 
-class AnthropicProvider(BaseProvider):
+class OpenAIProvider(BaseProvider):
     """
-    Anthropic API provider implementation.
-    Handles Claude chat completions and other Anthropic endpoints.
+    OpenAI API provider implementation.
+    Handles chat completions, embeddings, and other OpenAI endpoints.
     """
     
     def __init__(self):
-        super().__init__(name="anthropic", base_url="https://api.anthropic.com")
+        super().__init__(name="openai", base_url="https://api.openai.com/v1")
     
     def normalize_request(self, request_data: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Normalize Anthropic request data for consistent caching.
+        Normalize OpenAI request data for consistent caching.
         """
         normalized = {}
         
         # Core parameters that affect the response
         core_params = [
-            "model", "messages", "max_tokens", "temperature", "top_p", "top_k",
-            "stop_sequences", "stream", "system", "metadata", "tools", "tool_choice"
+            "model", "messages", "temperature", "max_tokens", "top_p", 
+            "frequency_penalty", "presence_penalty", "stop", "stream",
+            "tools", "tool_choice", "user", "response_format"
         ]
         
         # Only include parameters that are present in the request
@@ -30,12 +31,19 @@ class AnthropicProvider(BaseProvider):
         
         # Special handling for messages to ensure consistent ordering
         if "messages" in normalized:
+            # Ensure messages maintain order but normalize any inconsistencies
             messages = []
             for msg in normalized["messages"]:
                 normalized_msg = {
                     "role": msg.get("role"),
                     "content": msg.get("content")
                 }
+                if "name" in msg:
+                    normalized_msg["name"] = msg["name"]
+                if "tool_calls" in msg:
+                    normalized_msg["tool_calls"] = msg["tool_calls"]
+                if "tool_call_id" in msg:
+                    normalized_msg["tool_call_id"] = msg["tool_call_id"]
                 messages.append(normalized_msg)
             normalized["messages"] = messages
         
@@ -48,13 +56,12 @@ class AnthropicProvider(BaseProvider):
         endpoint: str
     ) -> Dict[str, Any]:
         """
-        Forward request to Anthropic API.
+        Forward request to OpenAI API.
         """
-        # Prepare headers for Anthropic API
+        # Prepare headers for OpenAI API
         api_headers = {
             "Content-Type": "application/json",
-            "User-Agent": "Rubberduck-Proxy/0.1.0",
-            "anthropic-version": "2023-06-01"  # Required by Anthropic API
+            "User-Agent": "Jack-Proxy/0.1.0"
         }
         
         # Pass through authorization header
@@ -62,20 +69,14 @@ class AnthropicProvider(BaseProvider):
             api_headers["Authorization"] = headers["authorization"]
         elif "Authorization" in headers:
             api_headers["Authorization"] = headers["Authorization"]
-        elif "x-api-key" in headers:
-            api_headers["x-api-key"] = headers["x-api-key"]
-        elif "X-API-Key" in headers:
-            api_headers["X-API-Key"] = headers["X-API-Key"]
         
-        # Normalize endpoint to ensure v1 prefix for actual Anthropic API
-        normalized_endpoint = endpoint
-        if not normalized_endpoint.startswith("/v1/"):
-            normalized_endpoint = f"/v1{normalized_endpoint}"
+        # Construct full URL - base_url already includes /v1
+        if endpoint.startswith("/v1"):
+            url = f"{self.base_url}{endpoint[3:]}"  # Remove /v1 prefix since base_url includes it
+        else:
+            url = f"{self.base_url}{endpoint}"
         
-        # Construct full URL
-        url = f"{self.base_url}{normalized_endpoint}"
-        
-        # Make request to Anthropic API
+        # Make request to OpenAI API
         async with httpx.AsyncClient() as client:
             try:
                 response = await client.post(
@@ -93,7 +94,7 @@ class AnthropicProvider(BaseProvider):
                         "headers": dict(response.headers)
                     }
                 else:
-                    # Return error response in Anthropic format
+                    # Return error response in OpenAI format
                     error_data = response.json() if response.content else {"error": {"message": "Unknown error"}}
                     return {
                         "status_code": response.status_code,
@@ -114,30 +115,35 @@ class AnthropicProvider(BaseProvider):
     
     def get_supported_endpoints(self) -> list[str]:
         """
-        Get list of supported Anthropic API endpoints.
-        Includes both direct endpoints and v1-prefixed endpoints for SDK compatibility.
+        Get list of supported OpenAI API endpoints.
         """
         return [
-            "/messages",
-            "/complete", 
-            "/models",
-            # v1 endpoints for official Anthropic SDK compatibility
-            "/v1/messages",
-            "/v1/complete",
-            "/v1/models"
+            "/v1/chat/completions",
+            "/v1/completions", 
+            "/v1/embeddings",
+            "/v1/models",
+            "/v1/images/generations",
+            "/v1/images/edits",
+            "/v1/images/variations",
+            "/v1/audio/transcriptions",
+            "/v1/audio/translations",
+            "/v1/files",
+            "/v1/fine_tuning/jobs",
+            "/v1/moderations"
         ]
     
     def transform_error_response(self, error_response: Dict[str, Any], status_code: int) -> Dict[str, Any]:
         """
-        Transform error responses to match Anthropic's expected format.
+        Transform error responses to match OpenAI's expected format.
         """
-        # Anthropic error format
-        anthropic_error = {
+        # OpenAI error format
+        openai_error = {
             "status_code": status_code,
             "data": {
                 "error": {
+                    "message": error_response.get("error", {}).get("message", "Unknown error"),
                     "type": error_response.get("error", {}).get("type", "api_error"),
-                    "message": error_response.get("error", {}).get("message", "Unknown error")
+                    "code": error_response.get("error", {}).get("code", None)
                 }
             },
             "headers": {
@@ -145,4 +151,4 @@ class AnthropicProvider(BaseProvider):
             }
         }
         
-        return anthropic_error
+        return openai_error

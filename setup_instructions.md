@@ -1,6 +1,6 @@
-# Rubberduck: Setup and Usage Guide
+# Jack: Setup and Usage Guide
 
-This guide covers everything you need to know to install, configure, run, and use the Rubberduck LLM proxy testing application from scratch.
+This guide covers everything you need to know to install, configure, run, and use the Jack LLM proxy testing application from scratch.
 
 ---
 
@@ -15,8 +15,8 @@ This guide covers everything you need to know to install, configure, run, and us
 
 1. **Clone the repository** (if you haven't already):
    ```bash
-   git clone https://github.com/Zipstack/rubberduck.git
-   cd rubberduck
+   git clone https://github.com/Zipstack/jack.git
+   cd jack
    ```
 
 2. **Set up the Python Virtual Environment:**
@@ -67,7 +67,7 @@ This guide covers everything you need to know to install, configure, run, and us
 You will need **two terminal windows** open—one for the backend API and one for the frontend UI.
 
 ### Terminal 1: Backend Server
-Navigate to the `rubberduck` root directory, activate your virtual environment, and start the Python server:
+Navigate to the `jack` root directory, activate your virtual environment, and start the Python server:
 ```bash
 source venv/bin/activate
 python run.py
@@ -85,7 +85,7 @@ npm run dev
 
 ---
 
-## 🎮 3. How to Use Rubberduck
+## 🎮 3. How to Use Jack
 
 ### Step 1: Log into the Dashboard
 1. Open your browser and go to `http://localhost:5173`.
@@ -94,7 +94,7 @@ npm run dev
    *   **Password:** `admin`
 
 ### Step 2: Create a New Testing Proxy
-Rubberduck acts as an intelligent intermediary between your application code and an actual LLM provider (like OpenAI or Anthropic).
+Jack acts as an intelligent intermediary between your application code and an actual LLM provider (like OpenAI or Anthropic).
 1. Go to the **Proxies** tab on the left sidebar.
 2. Click **Create Your First Proxy** (or the Create button).
 3. Fill in the details:
@@ -114,15 +114,15 @@ Click the **Start (Play Arrow)** button next to your proxy.
 *   It will automatically assign a unique local port (e.g., `8001`, `8002`).
 *   The status will turn green and say "Running".
 
-### Step 5: Route Your Code Through Rubberduck
-In your application code, replace the official base URL with the Rubberduck proxy URL. It transparently passes your actual API keys.
+### Step 5: Route Your Code Through Jack
+In your application code, replace the official base URL with the Jack proxy URL. It transparently passes your actual API keys.
 
 **Python (OpenAI SDK Example):**
 ```python
 import openai
 
 client = openai.OpenAI(
-    api_key="your-real-openai-key", # Rubberduck passes this through securely
+    api_key="your-real-openai-key", # Jack passes this through securely
     base_url="http://localhost:8001" # The port assigned to your running proxy
 )
 
@@ -150,7 +150,7 @@ console.log(response);
 ```
 
 ### Step 6: Monitor Logs and Caching
-1. Navigate to the **Logs** tab in the Rubberduck UI.
+1. Navigate to the **Logs** tab in the Jack UI.
 2. Every request your application makes will show up here in real-time.
 3. You will be able to see:
    *   If the request hit the cache or went upstream.

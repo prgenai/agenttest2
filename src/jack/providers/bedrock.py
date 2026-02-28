@@ -144,7 +144,7 @@ class BedrockProvider(BaseProvider):
         # Prepare headers for Bedrock API
         api_headers = {
             "Content-Type": "application/json",
-            "User-Agent": "Rubberduck-Proxy/0.1.0",
+            "User-Agent": "Jack-Proxy/0.1.0",
             "Accept": "application/json",
             "Host": f"bedrock-runtime.{region}.amazonaws.com"
         }

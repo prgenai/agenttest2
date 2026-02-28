@@ -3,7 +3,7 @@ import time
 import asyncio
 from unittest.mock import AsyncMock, MagicMock, patch
 from fastapi import Request, HTTPException
-from rubberduck.failure import FailureConfig, FailureSimulator, create_default_failure_config
+from jack.failure import FailureConfig, FailureSimulator, create_default_failure_config
 
 class TestFailureConfig:
     """Test FailureConfig dataclass functionality."""

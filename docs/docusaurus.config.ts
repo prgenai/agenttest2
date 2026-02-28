@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'Rubberduck',
+  title: 'Jack',
   tagline: 'Local LLM caching reverse proxy with advanced testing capabilities',
   favicon: 'img/favicon.ico',
 
@@ -15,15 +15,15 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://rubberduck-docs.example.com',
+  url: 'https://jack-docs.example.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'rubberduck', // Usually your GitHub org/user name.
-  projectName: 'rubberduck', // Usually your repo name.
+  organizationName: 'jack', // Usually your GitHub org/user name.
+  projectName: 'jack', // Usually your repo name.
 
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
@@ -57,10 +57,10 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: '🦆 Rubberduck',
+      title: '🦆 Jack',
       items: [
         {
-          href: 'https://github.com/your-username/rubberduck',
+          href: 'https://github.com/your-username/jack',
           label: 'GitHub',
           position: 'right',
         },
@@ -108,12 +108,12 @@ const config: Config = {
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/your-username/rubberduck',
+              href: 'https://github.com/your-username/jack',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Rubberduck. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Jack. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,

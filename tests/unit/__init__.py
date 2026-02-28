@@ -1,1 +1,1 @@
-"""Unit tests for Rubberduck"""
+"""Unit tests for Jack"""

@@ -4,15 +4,15 @@ from sqlalchemy.orm import declarative_base, sessionmaker
 
 import os
 
-# Get the project root directory (3 levels up from this file: src/rubberduck/database/__init__.py)
+# Get the project root directory (3 levels up from this file: src/jack/database/__init__.py)
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 DATA_DIR = os.path.join(PROJECT_ROOT, "data")
 
 # Ensure data directory exists
 os.makedirs(DATA_DIR, exist_ok=True)
 
-SQLALCHEMY_DATABASE_URL = f"sqlite:///{os.path.join(DATA_DIR, 'rubberduck.db')}"
-SQLALCHEMY_ASYNC_DATABASE_URL = f"sqlite+aiosqlite:///{os.path.join(DATA_DIR, 'rubberduck.db')}"
+SQLALCHEMY_DATABASE_URL = f"sqlite:///{os.path.join(DATA_DIR, 'jack.db')}"
+SQLALCHEMY_ASYNC_DATABASE_URL = f"sqlite+aiosqlite:///{os.path.join(DATA_DIR, 'jack.db')}"
 
 # Sync engine for regular operations  
 engine = create_engine(

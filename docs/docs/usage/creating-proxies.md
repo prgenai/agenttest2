@@ -1,10 +1,10 @@
 # Creating Proxies
 
-Learn how to create and configure LLM proxy instances in Rubberduck to connect to your favorite providers.
+Learn how to create and configure LLM proxy instances in Jack to connect to your favorite providers.
 
 ## Overview
 
-Rubberduck proxies are individual instances that connect to specific LLM providers. Each proxy runs on its own port and can be configured independently with different settings for caching, failure simulation, and monitoring.
+Jack proxies are individual instances that connect to specific LLM providers. Each proxy runs on its own port and can be configured independently with different settings for caching, failure simulation, and monitoring.
 
 ## Creating Your First Proxy
 
@@ -52,7 +52,7 @@ A modal dialog will appear with the following configuration options:
 
 **Port** (Optional)
 - Specify a custom port number for your proxy
-- If left empty, Rubberduck will automatically assign an available port
+- If left empty, Jack will automatically assign an available port
 - Range: 8001-9999 (avoiding conflicts with the main server)
 
 **Description** (Optional)
@@ -137,14 +137,14 @@ Bedrock requires special configuration. See our [Bedrock-specific guide](/provid
 ## Port Management
 
 ### Automatic Port Assignment
-- Rubberduck automatically assigns ports starting from 8001
+- Jack automatically assigns ports starting from 8001
 - Ports are incremented for each new proxy
 - Conflicts are automatically avoided
 
 ### Custom Port Assignment
 - You can specify a custom port during creation
 - Useful for consistent development environments
-- Rubberduck will warn if the port is already in use
+- Jack will warn if the port is already in use
 
 ### Port Ranges
 - **Reserved**: Ports 8000 (backend) and 5173 (frontend)

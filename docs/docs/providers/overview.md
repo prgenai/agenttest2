@@ -4,7 +4,7 @@ This section contains important configuration notes and guidelines for each supp
 
 ## Supported Providers
 
-Rubberduck supports the following LLM providers with full SDK compatibility:
+Jack supports the following LLM providers with full SDK compatibility:
 
 - **[AWS Bedrock](/providers/bedrock)** - Amazon's managed LLM service
 - **OpenAI** - GPT models and completions API
@@ -17,13 +17,13 @@ Rubberduck supports the following LLM providers with full SDK compatibility:
 
 ### Authentication
 - All providers require API keys or credentials passed through in requests
-- Rubberduck never stores or logs API keys for security
+- Jack never stores or logs API keys for security
 - Authentication is transparently passed to the upstream provider
 
 ### Request Compatibility
-- Rubberduck maintains full compatibility with official SDKs
+- Jack maintains full compatibility with official SDKs
 - No code changes required in your applications
-- Simply change the base URL to point to your Rubberduck proxy
+- Simply change the base URL to point to your Jack proxy
 
 ### Response Handling
 - Responses are returned exactly as received from providers
@@ -95,7 +95,7 @@ response = client.create_completion(...)
 end_time = time.time()
 
 print(f"Request took {end_time - start_time:.2f}s")
-# Check Rubberduck logs for detailed metrics
+# Check Jack logs for detailed metrics
 ```
 
 ## Troubleshooting

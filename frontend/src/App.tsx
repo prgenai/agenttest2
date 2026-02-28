@@ -18,7 +18,7 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
           <div className="text-4xl mb-4">🦆</div>
-          <div className="text-lg font-medium text-gray-900">Loading Rubberduck...</div>
+          <div className="text-lg font-medium text-gray-900">Loading Jack...</div>
         </div>
       </div>
     );

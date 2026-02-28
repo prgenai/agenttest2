@@ -1,6 +1,6 @@
 # Logging & Monitoring
 
-Rubberduck provides comprehensive logging and monitoring capabilities to track proxy performance, analyze usage patterns, and troubleshoot issues. Learn how to effectively monitor your LLM proxy infrastructure.
+Jack provides comprehensive logging and monitoring capabilities to track proxy performance, analyze usage patterns, and troubleshoot issues. Learn how to effectively monitor your LLM proxy infrastructure.
 
 ## Overview
 
@@ -276,7 +276,7 @@ curl "http://localhost:9000/api/logs/export?cache=false&format=jsonl" > cache_mi
 ```yaml
 # prometheus.yml
 scrape_configs:
-  - job_name: 'rubberduck'
+  - job_name: 'jack'
     static_configs:
       - targets: ['localhost:9000']
     metrics_path: '/api/metrics'

@@ -1,10 +1,10 @@
 # Installation
 
-Get Rubberduck up and running in just a few minutes with this step-by-step installation guide.
+Get Jack up and running in just a few minutes with this step-by-step installation guide.
 
 ## Prerequisites
 
-Before installing Rubberduck, ensure you have:
+Before installing Jack, ensure you have:
 
 - **Python 3.11+** - Required for the backend server
 - **Node.js 18+** - Required for the frontend interface
@@ -15,8 +15,8 @@ Before installing Rubberduck, ensure you have:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/rubberduck.git
-cd rubberduck
+git clone https://github.com/your-username/jack.git
+cd jack
 ```
 
 ### 2. Backend Setup
@@ -139,7 +139,7 @@ The backend can be configured using environment variables:
 
 ```bash
 # Optional: Set custom database path
-export DATABASE_URL="sqlite:///./data/rubberduck.db"
+export DATABASE_URL="sqlite:///./data/jack.db"
 
 # Optional: Configure CORS settings
 export FRONTEND_URL="http://localhost:5173"
@@ -168,7 +168,7 @@ For production deployments, consider:
 pip install gunicorn[gevent]
 
 # Run with gunicorn
-gunicorn src.rubberduck.main:app -w 4 -k uvicorn.workers.UvicornWorker
+gunicorn src.jack.main:app -w 4 -k uvicorn.workers.UvicornWorker
 ```
 
 ### Frontend Production Build
@@ -231,7 +231,7 @@ If you encounter issues:
 
 ## Next Steps
 
-Now that Rubberduck is installed, you're ready to:
+Now that Jack is installed, you're ready to:
 
 1. **[Create your first proxy](/usage/creating-proxies)** - Set up a connection to your favorite LLM provider
 2. **[Learn about proxy management](/usage/managing-proxies)** - Start, stop, and configure your proxies
@@ -239,4 +239,4 @@ Now that Rubberduck is installed, you're ready to:
 
 ---
 
-🎉 **Congratulations!** You now have Rubberduck running locally. Time to create your first LLM proxy!
+🎉 **Congratulations!** You now have Jack running locally. Time to create your first LLM proxy!

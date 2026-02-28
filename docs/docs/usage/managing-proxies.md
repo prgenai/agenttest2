@@ -1,6 +1,6 @@
 # Managing Proxies
 
-Learn how to control, configure, and monitor your LLM proxy instances in Rubberduck.
+Learn how to control, configure, and monitor your LLM proxy instances in Jack.
 
 ## Proxy Lifecycle Management
 
@@ -12,7 +12,7 @@ Learn how to control, configure, and monitor your LLM proxy instances in Rubberd
 3. Click the **"Start"** button (green play icon)
 
 **Automatic Startup:**
-- Running proxies are automatically restarted when Rubberduck restarts
+- Running proxies are automatically restarted when Jack restarts
 - Proxy states are saved and restored from the database
 
 **Startup Process:**

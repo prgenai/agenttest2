@@ -11,7 +11,7 @@ This allows immediate access to the application without requiring registration. 
 
 ## Notes
 
-- For Rubberduck, use the venv in the project root. For the testing script, use the venv at scripts/proxy_testing/. Do not use the system Python.
+- For Jack, use the venv in the project root. For the testing script, use the venv at scripts/proxy_testing/. Do not use the system Python.
 - Do not start the backend or frontend servers yourself. I will run them with stdout and stderr redirected to <project_root>/backend.log and <project_root>/frontend/frontend.log. You can read these files to understand what's going on.
 - Whenever the user asks you to commit / push to git, always do it from the project's root directory and never commit or push without first confirming with me.
 - The Django backend listens on port 9000, while the frontend listens on port 5173.
